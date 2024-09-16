@@ -6,11 +6,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/dto"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/server/handler"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/usecase"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/pkg/mocks"
 	"github.com/go-chi/chi/v5"
+	"github.com/njslxve/tender-service/internal/dto"
+	"github.com/njslxve/tender-service/internal/server/handler"
+	"github.com/njslxve/tender-service/internal/usecase"
+	"github.com/njslxve/tender-service/pkg/mocks"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

@@ -1,4 +1,4 @@
-module git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105
+module github.com/njslxve/tender-service
 
 go 1.22.3
 

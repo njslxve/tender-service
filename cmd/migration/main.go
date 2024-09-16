@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"log"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/config"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/migrations"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
+	"github.com/njslxve/tender-service/internal/config"
+	"github.com/njslxve/tender-service/migrations"
 	"github.com/pressly/goose/v3"
 )
 

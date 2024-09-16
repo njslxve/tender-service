@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/server/handler"
+	"github.com/njslxve/tender-service/internal/server/handler"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

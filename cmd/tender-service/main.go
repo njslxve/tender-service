@@ -4,13 +4,13 @@ import (
 	"log/slog"
 	"os"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/config"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/server"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/transport/storage"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/usecase"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/pkg/client/postgres"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/pkg/logger"
 	_ "github.com/jackc/pgx/v5/stdlib"
+	"github.com/njslxve/tender-service/internal/config"
+	"github.com/njslxve/tender-service/internal/server"
+	"github.com/njslxve/tender-service/internal/transport/storage"
+	"github.com/njslxve/tender-service/internal/usecase"
+	"github.com/njslxve/tender-service/pkg/client/postgres"
+	"github.com/njslxve/tender-service/pkg/logger"
 )
 
 func main() {

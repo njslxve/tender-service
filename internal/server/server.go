@@ -9,11 +9,11 @@ import (
 	"syscall"
 	"time"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/config"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/server/handler"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/usecase"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/njslxve/tender-service/internal/config"
+	"github.com/njslxve/tender-service/internal/server/handler"
+	"github.com/njslxve/tender-service/internal/usecase"
 )
 
 type Server struct {

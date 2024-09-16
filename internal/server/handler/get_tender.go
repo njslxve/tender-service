@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"net/http"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/dto"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/validate"
+	"github.com/njslxve/tender-service/internal/dto"
+	"github.com/njslxve/tender-service/internal/validate"
 )
 
 type GetTendersInterface interface {

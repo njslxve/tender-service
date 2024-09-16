@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/entity"
 	sq "github.com/Masterminds/squirrel"
+	"github.com/njslxve/tender-service/internal/entity"
 )
 
 func (s *Storage) GetBidsForTender(tenderId string, username string, limit string, offset string) ([]entity.Bid, error) {
