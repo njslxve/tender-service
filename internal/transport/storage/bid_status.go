@@ -11,16 +11,30 @@ import (
 func (s *Storage) BidStatus(bidId string, username string) (string, error) {
 	const op = "storage.BidStatus"
 
-	var status string
+	var status, userID string
+
+	q := qb.Select("id").
+		From("employee").
+		Where(sq.Eq{"username": username})
+
+	sql, args, err := q.ToSql()
+	if err != nil {
+		return "", fmt.Errorf("%s: %w", op, err)
+	}
+
+	err = s.db.QueryRow(context.Background(), sql, args...).Scan(&userID)
+	if err != nil {
+		return "", fmt.Errorf("%s: %w", op, err)
+	}
 
 	querry := qb.Select("bv.status").
 		From("bids_versions bv").
 		Join("bids b ON bv.bid_id = b.id").
 		Where(sq.Eq{"bv.bid_id": bidId}).
-		Where(sq.Eq{"bv.creator_username": username}).
+		Where(sq.Eq{"bv.author_id": userID}).
 		Where("bv.version = b.latest_version")
 
-	sql, args, err := querry.ToSql()
+	sql, args, err = querry.ToSql()
 	if err != nil {
 		return "", fmt.Errorf("%s: %w", op, err)
 	}

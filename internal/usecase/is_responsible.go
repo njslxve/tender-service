@@ -9,7 +9,7 @@ func (u *Usecase) isResponsible(user string, org string) error {
 
 	err := u.db.IsResponsible(user, org)
 	if err != nil {
-		u.logger.Error(op, slog.String("error", err.Error())) // TODO: add error message
+		u.logger.Error(op, slog.String("error", ErrNotPermissions.Error()))
 
 		return ErrNotPermissions
 	}

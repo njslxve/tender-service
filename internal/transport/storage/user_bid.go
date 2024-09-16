@@ -32,6 +32,22 @@ func (s *Storage) GetUserBids(username string, limit string, offset string) ([]e
 		off = o
 	}
 
+	var userID string
+
+	q := qb.Select("id").
+		From("employee").
+		Where(sq.Eq{"username": username})
+
+	sql, args, err := q.ToSql()
+	if err != nil {
+		return []entity.Bid{}, fmt.Errorf("%s: %w", op, err)
+	}
+
+	err = s.db.QueryRow(context.Background(), sql, args...).Scan(&userID)
+	if err != nil {
+		return []entity.Bid{}, fmt.Errorf("%s: %w", op, err)
+	}
+
 	querry := qb.Select(
 		"b.id as bid_id",
 		"bv.name",
@@ -44,7 +60,7 @@ func (s *Storage) GetUserBids(username string, limit string, offset string) ([]e
 		From("bids b").
 		Join("bids_versions bv ON b.id = bv.bid_id").
 		Where("bv.version = b.latest_version").
-		Where(sq.Eq{"bv.author_id": username}).
+		Where(sq.Eq{"bv.author_id": userID}).
 		OrderBy("bv.name")
 
 	if limit != "" {
@@ -55,7 +71,7 @@ func (s *Storage) GetUserBids(username string, limit string, offset string) ([]e
 		querry = querry.Offset(uint64(off))
 	}
 
-	sql, args, err := querry.ToSql()
+	sql, args, err = querry.ToSql()
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", op, err)
 	}

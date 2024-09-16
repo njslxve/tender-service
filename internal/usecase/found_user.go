@@ -7,7 +7,7 @@ func (u *Usecase) foundUser(username string) error {
 
 	err := u.db.FoundUser(username)
 	if err != nil {
-		u.logger.Error(op, slog.String("error", err.Error())) // TODO: add error message
+		u.logger.Error(op, slog.String("error", ErrUserNotFound.Error()))
 
 		return ErrUserNotFound
 	}

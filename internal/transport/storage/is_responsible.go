@@ -49,7 +49,7 @@ func (s *Storage) IsResponsible(user string, org string) error {
 	}
 
 	if id == "" {
-		return fmt.Errorf("%s: %w", op, fmt.Errorf("not responsible")) // TODO: add error message
+		return fmt.Errorf("%s: %w", op, fmt.Errorf("not responsible"))
 	}
 
 	return nil

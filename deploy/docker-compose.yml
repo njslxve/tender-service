@@ -12,35 +12,35 @@ services:
       POSTGRES_DB: tender-service
       POSTGRES_USER: avito
       POSTGRES_PASSWORD: avito
-    networks:
-      - tender-service
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-  tender-service:
-    build:
-      context: ..
-      dockerfile: Dockerfile
-    ports:
-      - target: 8080
-        published: 8080
-        protocol: tcp
-        mode: target
-    environment:
-      SERVER_ADDRESS: 0.0.0.0:8080
-      POSTGRES_CONN: postgres://avito:avito@host.docker.internal:5432/tender-service
-      POSTGRES_JDBC_URL: jdbc:postgresql://host.docker.internal:5432/tender-service
-      POSTGRES_USERNAME: avito
-      POSTGRES_PASSWORD: avito
-      POSTGRES_HOST: host.docker.internal
-      POSTGRES_PORT: 5432
-      POSTGRES_DATABASE: tender-service
-    networks:
-      - tender-service
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on:
-      - tender-service-db
+    # networks:
+    #   - tender-service
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+#   tender-service:
+#     build:
+#       context: ..
+#       dockerfile: Dockerfile
+#     ports:
+#       - target: 8080
+#         published: 8080
+#         protocol: tcp
+#         mode: target
+#     environment:
+#       SERVER_ADDRESS: 0.0.0.0:8080
+#       POSTGRES_CONN: postgres://avito:avito@tender-service:5432/tender-service
+#       POSTGRES_JDBC_URL: jdbc:postgresql://host.docker.internal:5432/tender-service
+#       POSTGRES_USERNAME: avito
+#       POSTGRES_PASSWORD: avito
+#       POSTGRES_HOST: host.docker.internal
+#       POSTGRES_PORT: 5432
+#       POSTGRES_DATABASE: tender-service
+#     networks:
+#       - tender-service
+#     extra_hosts:
+#       - "host.docker.internal:host-gateway"
+#     depends_on:
+#       - tender-service-db
 
-networks:
-  tender-service:
-    driver: bridge
+# networks:
+#   tender-service:
+#     driver: bridge

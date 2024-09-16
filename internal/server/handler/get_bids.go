@@ -8,6 +8,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/njslxve/tender-service/internal/dto"
 	"github.com/njslxve/tender-service/internal/usecase"
+	"github.com/njslxve/tender-service/internal/validate"
 )
 
 func GetBidsForTender(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc {
@@ -19,25 +20,28 @@ func GetBidsForTender(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerF
 		limit := r.URL.Query().Get("limit")
 		offset := r.URL.Query().Get("offset")
 
-		// err := validate.Params(tendtedID, username)
-		// if err != nil {
-		// 	e := dto.Error{
-		// 		Reason: err.Error(), // TODO: add error message
-		// 	}
+		validData := make(map[string]string)
+		validData["tenderID"] = tendterID
 
-		// 	logger.Error(op, slog.String("error", err.Error()))
+		err := validate.ValidateParams(validData)
+		if err != nil {
+			e := dto.Error{
+				Reason: ErrBadRequest,
+			}
 
-		// 	w.Header().Add("Content-Type", "application/json")
-		// 	w.WriteHeader(http.StatusBadRequest)
-		// 	json.NewEncoder(w).Encode(e)
+			logger.Error(op, slog.String("error", err.Error()))
 
-		// 	return
-		// }
+			w.Header().Add("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(w).Encode(e)
+
+			return
+		}
 
 		bids, err := ucase.GetBidsForTender(tendterID, username, limit, offset)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))

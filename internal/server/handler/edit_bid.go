@@ -24,7 +24,7 @@ func EditBid(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc {
 		err := validate.ValidateParams(validData)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrBadRequest,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))
@@ -40,7 +40,7 @@ func EditBid(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc {
 
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			e := dto.Error{
-				Reason: "Bad request", // TODO: add error message
+				Reason: ErrBadRequest,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))
@@ -55,7 +55,7 @@ func EditBid(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc {
 		bid, err := ucase.EditBid(bidID, username, req)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))

@@ -26,7 +26,7 @@ func SubmitBidFeedback(logger *slog.Logger, ucase *usecase.Usecase) http.Handler
 		err := validate.ValidateParams(validData)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))
@@ -41,7 +41,7 @@ func SubmitBidFeedback(logger *slog.Logger, ucase *usecase.Usecase) http.Handler
 		bid, err := ucase.SubmitBidFeedback(bidID, feedback, username)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))

@@ -1,3 +1,6 @@
+.PHONY: run
+run:
+	@go run ./cmd/tender-service/main.go
 .PHONY: up
 up:
 	@cd ./deploy && docker compose up -d

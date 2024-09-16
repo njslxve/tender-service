@@ -27,7 +27,7 @@ func GetBidReviews(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc
 		err := validate.ValidateParams(validData)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))
@@ -42,7 +42,7 @@ func GetBidReviews(logger *slog.Logger, ucase *usecase.Usecase) http.HandlerFunc
 		review, err := ucase.GetBidReviews(tenderID, author, requester, limit, offset)
 		if err != nil {
 			e := dto.Error{
-				Reason: err.Error(), // TODO: add error message
+				Reason: ErrInternal,
 			}
 
 			logger.Error(op, slog.String("error", err.Error()))

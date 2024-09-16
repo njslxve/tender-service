@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"log/slog"
 	"os"
 
@@ -9,8 +10,10 @@ import (
 	"github.com/njslxve/tender-service/internal/server"
 	"github.com/njslxve/tender-service/internal/transport/storage"
 	"github.com/njslxve/tender-service/internal/usecase"
+	"github.com/njslxve/tender-service/migrations"
 	"github.com/njslxve/tender-service/pkg/client/postgres"
 	"github.com/njslxve/tender-service/pkg/logger"
+	"github.com/pressly/goose/v3"
 )
 
 func main() {
@@ -25,19 +28,19 @@ func main() {
 		return
 	}
 
-	// goose.SetBaseFS(migrations.EmbedFS)
-	// db, err := sql.Open("pgx", cfg.PostgresConn)
-	// if err != nil {
-	// 	log.Error(err.Error())
-	// 	os.Exit(1)
-	// }
+	goose.SetBaseFS(migrations.EmbedFS)
+	db, err := sql.Open("pgx", cfg.PostgresConn)
+	if err != nil {
+		log.Error(err.Error())
+		os.Exit(1)
+	}
 
-	// err = goose.Up(db, ".")
-	// if err != nil {
-	// 	log.Error(err.Error())
-	// 	os.Exit(1)
-	// }
-	// db.Close()
+	err = goose.Up(db, ".")
+	if err != nil {
+		log.Error(err.Error())
+		os.Exit(1)
+	}
+	db.Close()
 
 	client, err := postgres.NewClient(cfg)
 	if err != nil {
