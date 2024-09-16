@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  tender-service-db:
+    image: postgres:15
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+        mode: target
+    environment:
+      POSTGRES_DB: tender-service
+      POSTGRES_USER: avito
+      POSTGRES_PASSWORD: avito
