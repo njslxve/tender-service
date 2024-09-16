@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/dto"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/entity"
+	"github.com/njslxve/tender-service/internal/dto"
+	"github.com/njslxve/tender-service/internal/entity"
 )
 
 func (u *Usecase) RollbackTender(tenderId string, version string, username string) (dto.TenderResponse, error) {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/dto"
+	"github.com/njslxve/tender-service/internal/dto"
 )
 
 func (u *Usecase) GetTenders(serviceType string, limit string, offset string) ([]dto.TenderResponse, error) {

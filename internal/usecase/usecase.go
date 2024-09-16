@@ -3,8 +3,8 @@ package usecase
 import (
 	"log/slog"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/config"
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/entity"
+	"github.com/njslxve/tender-service/internal/config"
+	"github.com/njslxve/tender-service/internal/entity"
 )
 
 type StorageInterface interface {

@@ -3,7 +3,7 @@ package validate_test
 import (
 	"testing"
 
-	"git.codenrock.com/avito-testirovanie-na-backend-1270/cnrprod1725721237-team-77964/zadanie-6105/internal/validate"
+	"github.com/njslxve/tender-service/internal/validate"
 	"github.com/stretchr/testify/assert"
 )
 
